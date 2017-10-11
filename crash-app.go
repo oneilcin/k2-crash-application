@@ -22,6 +22,7 @@ import (
 	"fmt"
 	"os"
 	"regexp"
+	"time"
 
 	"encoding/json"
 	"io/ioutil"
@@ -40,8 +41,10 @@ func sendLogs(filename string) error {
 	failedTask := getFailedTask(log)
 
 	// Format data for POST request and send to ElasticSearch.
-	url := "https://k2crashreporter.kubeme.io/k2crashreporter/k2crashes"
-	body := map[string]string{"k2_log": log, "failed_task": failedTask}
+	url := "https://krakencrashreporter.kubeme.io/krakencrashreporter/krakencrashes"
+	t := time.Now().UTC()
+	ts := t.Format("2006-01-02T15:04:05.000Z")
+	body := map[string]string{"k2_log": log, "failed_task": failedTask, "date": ts}
 	bodyBytes, err := json.Marshal(body)
 	if err != nil {
 		err = fmt.Errorf("Error preparing data in json format for POST request: %v", err)
