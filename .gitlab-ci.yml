@@ -21,6 +21,8 @@ before_script:
 test:
   stage: test
   script:
+    - pwd
+    - ls Makefile
     - make test
 
 build:
