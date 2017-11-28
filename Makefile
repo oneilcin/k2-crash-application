@@ -29,6 +29,9 @@ deps:
 	go get github.com/c4milo/github-release
 	go get github.com/mitchellh/gox
 
+test:
+	go test -v ./...
+
 dist: compile
 	$(eval FILES := $(shell ls build))
 	@rm -rf dist && mkdir dist

@@ -1,0 +1,29 @@
+---
+image: golang:latest
+
+variables:
+  REPO_NAME: github.com/samsung-cnct/k2-crash-application
+
+stages:
+  - test
+  - build
+
+before_script:
+  - export GOPATH=/go
+  - mkdir -p $GOPATH/src/$REPO_NAME
+  - ln -s $CI_PROJECT_DIR $GOPATH/src/$REPO_NAME
+  - cd $GOPATH/src/$REPO_NAME
+  - go version
+  - go env
+  - make deps 
+
+test:
+  stage: test
+  script:
+    - make test
+
+build:
+  stage: build
+  script:
+    - make compile
+
