@@ -22,6 +22,7 @@ test:
   stage: test
   script:
     - pwd
+    - ls $CI_PROJECT_DIR
     - ls Makefile
     - make test
 
