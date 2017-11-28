@@ -15,7 +15,8 @@ before_script:
   - cd $GOPATH/src/$REPO_NAME
   - go version
   - go env
-  - make deps 
+  - go get github.com/c4milo/github-release
+  - go get github.com/mitchellh/gox 
 
 test:
   stage: test
