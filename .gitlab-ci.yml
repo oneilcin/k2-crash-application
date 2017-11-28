@@ -9,10 +9,11 @@ stages:
   - build
 
 before_script:
-  - export GOPATH=/go
-  - mkdir -p $GOPATH/src/$REPO_NAME
-  - ln -s $CI_PROJECT_DIR $GOPATH/src/$REPO_NAME
-  - cd $GOPATH/src/$REPO_NAME
+  - export GOPATH=$(dirname $CI_PROJECT_DIR)/go
+  - mkdir -p $GOPATH/src
+  - cd $GOPATH/src
+  - ln -s $CI_PROJECT_DIR
+  - cd $CI_PROJECT_NAME
   - go version
   - go env
   - go get github.com/c4milo/github-release
@@ -23,7 +24,6 @@ test:
   script:
     - pwd
     - ls $CI_PROJECT_DIR
-    - ls /go/src/github.com/samsung-cnct/k2-crash-application
     - ls ./Makefile
     - make test
 
