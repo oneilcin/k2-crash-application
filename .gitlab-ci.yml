@@ -23,7 +23,8 @@ test:
   script:
     - pwd
     - ls $CI_PROJECT_DIR
-    - ls Makefile
+    - ls /go/src/github.com/samsung-cnct/k2-crash-application
+    - ls ./Makefile
     - make test
 
 build:
