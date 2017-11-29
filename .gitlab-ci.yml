@@ -9,24 +9,18 @@ stages:
   - build
 
 before_script:
-  - export GOPATH=$(dirname $CI_PROJECT_DIR)/go
-  - mkdir -p $GOPATH/src
-  - cd $GOPATH/src
-  - ln -s $CI_PROJECT_DIR
+  - mkdir -p /go/src/github.com/samsung-cnct
+  - ln -s $CI_PROJECT_DIR /go/src/github.com/samsung-cnct/k2-crash-application
+  - cd /go/src/github.com/samsung-cnct/k2-crash-application
   - go version
   - go env
-  - mkdir -p $GOPATH/bin
-  - cd $GOPATH/bin
-  - go get -v github.com/c4milo/github-release
-  - go get -v github.com/mitchellh/gox 
-  - cd $CI_PROJECT_NAME
+  - make deps
 
 test:
   stage: test
   script:
     - pwd
-    - ls $CI_PROJECT_DIR
-    - ls ./Makefile
+    - ls -alt 
     - make test
 
 build:
