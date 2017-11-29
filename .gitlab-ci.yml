@@ -16,8 +16,8 @@ before_script:
   - cd $CI_PROJECT_NAME
   - go version
   - go env
-  - go get github.com/c4milo/github-release
-  - go get github.com/mitchellh/gox 
+  - go get -v github.com/c4milo/github-release
+  - go get -v github.com/mitchellh/gox 
 
 test:
   stage: test
