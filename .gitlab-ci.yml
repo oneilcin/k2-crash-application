@@ -13,11 +13,13 @@ before_script:
   - mkdir -p $GOPATH/src
   - cd $GOPATH/src
   - ln -s $CI_PROJECT_DIR
-  - cd $CI_PROJECT_NAME
   - go version
   - go env
+  - mkdir -p $GOPATH/bin
+  - cd $GOPATH/bin
   - go get -v github.com/c4milo/github-release
   - go get -v github.com/mitchellh/gox 
+  - cd $CI_PROJECT_NAME
 
 test:
   stage: test
@@ -31,6 +33,7 @@ build:
   stage: build
   script:
     - pwd
-    - ls -alt $GOPATH/bin/github.com
+    - ls -alt $GOPATH/bin/
+    - ls -alt 
     - make compile
 
