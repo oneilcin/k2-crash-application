@@ -1,4 +1,6 @@
 # k2-crash-application
+[![pipeline status](https://git.cnct.io/common-tools/samsung-cnct_k2-crash-application/badges/master/pipeline.svg)](https://git.cnct.io/common-tools/samsung-cnct_k2-crash-application/commits/master)
+
 Application to monitor [K2](https://github.com/samsung-cnct/k2) crashes. 
 
 ## Installation

@@ -10,8 +10,8 @@ stages:
 
 before_script:
   - mkdir -p /go/src/github.com/samsung-cnct
-  - ln -s $CI_PROJECT_DIR /go/src/github.com/samsung-cnct/k2-crash-application
-  - cd /go/src/github.com/samsung-cnct/k2-crash-application
+  - ln -s $CI_PROJECT_DIR /go/src/$REPO_NAME
+  - cd /go/src/$REPO_NAME
   - go version
   - go env
   - make deps
@@ -20,14 +20,11 @@ test:
   stage: test
   script:
     - pwd
-    - ls -alt 
+    - ls -alt
     - make test
 
 build:
   stage: build
   script:
-    - pwd
     - ls -alt $GOPATH/bin/
-    - ls -alt 
     - make compile
-
